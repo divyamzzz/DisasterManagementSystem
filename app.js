@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"
 import Header from "./pages/header.js"
 import {createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import Body from "./pages/Body.js"
+import Login from "./pages/Login.js"
 const App=()=>{
     return(
         <div className="app">
@@ -19,6 +20,10 @@ const router=createBrowserRouter(
             children:[
                 {
                     path:"/",
+                    element:<Login/>
+                },
+                {
+                    path:"/home",
                     element:<Body/>
                 }
             ]
