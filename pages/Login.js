@@ -4,20 +4,21 @@ import axios from "axios";
 import Base_URl from "../url";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "../context/AuthContext";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate=useNavigate();   
+    const{login}=useAuth();
     const handleSubmit = async(e) => {
         e.preventDefault();
         const payload={
             email:email,
             password:password
         }
-        const res= await axios.post(`${Base_URl}/Login/login`,payload)
-        if(res.status===200){
-         
+        const res= await login(email,password);
+        if(res.success){
+    
             navigate('/home');
         }
         else{
